@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		602B0E2E261B8EAC0082C138 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602B0E2D261B8EAC0082C138 /* Location.swift */; };
 		602B0E31261B957B0082C138 /* LastTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602B0E30261B957B0082C138 /* LastTrack.swift */; };
+		606750A0261E201A00ED12EF /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6067509F261E201A00ED12EF /* User.swift */; };
+		606750A5261E215200ED12EF /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606750A4261E215200ED12EF /* LoginView.swift */; };
+		606750AF261E221500ED12EF /* UITextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606750AE261E221500ED12EF /* UITextFieldExtension.swift */; };
+		606750B2261E222E00ED12EF /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606750B1261E222E00ED12EF /* UIViewControllerExtension.swift */; };
+		606750B5261E23A100ED12EF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606750B4261E23A100ED12EF /* LoginViewController.swift */; };
 		606CFA9B2614E1C700F33C4B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606CFA9A2614E1C700F33C4B /* AppDelegate.swift */; };
 		606CFA9D2614E1C700F33C4B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606CFA9C2614E1C700F33C4B /* SceneDelegate.swift */; };
 		606CFAA42614E1CA00F33C4B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 606CFAA32614E1CA00F33C4B /* Assets.xcassets */; };
@@ -21,6 +26,11 @@
 		04058C837D45AB753294D636 /* Pods-Frameworks.geekbrains.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Frameworks.geekbrains.debug.xcconfig"; path = "Target Support Files/Pods-Frameworks.geekbrains/Pods-Frameworks.geekbrains.debug.xcconfig"; sourceTree = "<group>"; };
 		602B0E2D261B8EAC0082C138 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		602B0E30261B957B0082C138 /* LastTrack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastTrack.swift; sourceTree = "<group>"; };
+		6067509F261E201A00ED12EF /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		606750A4261E215200ED12EF /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		606750AE261E221500ED12EF /* UITextFieldExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldExtension.swift; sourceTree = "<group>"; };
+		606750B1261E222E00ED12EF /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
+		606750B4261E23A100ED12EF /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		606CFA972614E1C700F33C4B /* Frameworks.geekbrains.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Frameworks.geekbrains.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		606CFA9A2614E1C700F33C4B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		606CFA9C2614E1C700F33C4B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -53,6 +63,42 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		6067509E261E200600ED12EF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				602B0E30261B957B0082C138 /* LastTrack.swift */,
+				602B0E2D261B8EAC0082C138 /* Location.swift */,
+				6067509F261E201A00ED12EF /* User.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		606750A2261E20A700ED12EF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				606750A4261E215200ED12EF /* LoginView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		606750A3261E20AD00ED12EF /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				606750B4261E23A100ED12EF /* LoginViewController.swift */,
+				606CFAB12614E22300F33C4B /* MapViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		606750A7261E218000ED12EF /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				606750AE261E221500ED12EF /* UITextFieldExtension.swift */,
+				606750B1261E222E00ED12EF /* UIViewControllerExtension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		606CFA8E2614E1C700F33C4B = {
 			isa = PBXGroup;
 			children = (
@@ -76,9 +122,10 @@
 			children = (
 				606CFA9A2614E1C700F33C4B /* AppDelegate.swift */,
 				606CFA9C2614E1C700F33C4B /* SceneDelegate.swift */,
-				606CFAB12614E22300F33C4B /* MapViewController.swift */,
-				602B0E2D261B8EAC0082C138 /* Location.swift */,
-				602B0E30261B957B0082C138 /* LastTrack.swift */,
+				6067509E261E200600ED12EF /* Model */,
+				606750A2261E20A700ED12EF /* View */,
+				606750A3261E20AD00ED12EF /* Controller */,
+				606750A7261E218000ED12EF /* Extension */,
 				606CFAA32614E1CA00F33C4B /* Assets.xcassets */,
 				606CFAA52614E1CA00F33C4B /* LaunchScreen.storyboard */,
 				606CFAA82614E1CA00F33C4B /* Info.plist */,
@@ -226,9 +273,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				602B0E31261B957B0082C138 /* LastTrack.swift in Sources */,
+				606750AF261E221500ED12EF /* UITextFieldExtension.swift in Sources */,
+				606750B2261E222E00ED12EF /* UIViewControllerExtension.swift in Sources */,
+				606750A5261E215200ED12EF /* LoginView.swift in Sources */,
 				606CFA9B2614E1C700F33C4B /* AppDelegate.swift in Sources */,
+				606750A0261E201A00ED12EF /* User.swift in Sources */,
 				606CFAB22614E22300F33C4B /* MapViewController.swift in Sources */,
 				602B0E2E261B8EAC0082C138 /* Location.swift in Sources */,
+				606750B5261E23A100ED12EF /* LoginViewController.swift in Sources */,
 				606CFA9D2614E1C700F33C4B /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
