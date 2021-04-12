@@ -96,6 +96,7 @@ final class LoginView: UIView {
     private func configure() {
         loginTextField = makeTextField(placeholder: "Login")
         passwordTextField = makeTextField(placeholder: "Password")
+        passwordTextField.isSecureTextEntry = true
         
         setupViews()
         setupAutoLayout()
@@ -104,6 +105,7 @@ final class LoginView: UIView {
     private func makeTextField(placeholder: String) -> UITextField {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.autocorrectionType = .no
         textField.backgroundColor = .white
         textField.textColor = .gray
         textField.font = UIFont.systemFont(ofSize: 15)
