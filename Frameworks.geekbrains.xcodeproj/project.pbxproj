@@ -3,20 +3,24 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		00AF676EDE800121D0FF476B /* libPods-Frameworks.geekbrains.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 97FE5470DFAF130B13256A97 /* libPods-Frameworks.geekbrains.a */; };
+		602B0E2E261B8EAC0082C138 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602B0E2D261B8EAC0082C138 /* Location.swift */; };
+		602B0E31261B957B0082C138 /* LastTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602B0E30261B957B0082C138 /* LastTrack.swift */; };
 		606CFA9B2614E1C700F33C4B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606CFA9A2614E1C700F33C4B /* AppDelegate.swift */; };
 		606CFA9D2614E1C700F33C4B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606CFA9C2614E1C700F33C4B /* SceneDelegate.swift */; };
 		606CFAA42614E1CA00F33C4B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 606CFAA32614E1CA00F33C4B /* Assets.xcassets */; };
 		606CFAA72614E1CA00F33C4B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 606CFAA52614E1CA00F33C4B /* LaunchScreen.storyboard */; };
 		606CFAB22614E22300F33C4B /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606CFAB12614E22300F33C4B /* MapViewController.swift */; };
+		EA5AEEC417FAA8C22D38B598 /* Pods_Frameworks_geekbrains.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C09B79BC9183F0F6D62C7289 /* Pods_Frameworks_geekbrains.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		04058C837D45AB753294D636 /* Pods-Frameworks.geekbrains.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Frameworks.geekbrains.debug.xcconfig"; path = "Target Support Files/Pods-Frameworks.geekbrains/Pods-Frameworks.geekbrains.debug.xcconfig"; sourceTree = "<group>"; };
+		602B0E2D261B8EAC0082C138 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		602B0E30261B957B0082C138 /* LastTrack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastTrack.swift; sourceTree = "<group>"; };
 		606CFA972614E1C700F33C4B /* Frameworks.geekbrains.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Frameworks.geekbrains.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		606CFA9A2614E1C700F33C4B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		606CFA9C2614E1C700F33C4B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,8 +28,8 @@
 		606CFAA62614E1CA00F33C4B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		606CFAA82614E1CA00F33C4B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		606CFAB12614E22300F33C4B /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
-		97FE5470DFAF130B13256A97 /* libPods-Frameworks.geekbrains.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Frameworks.geekbrains.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D5D8F7691D2028A23E0D134 /* Pods-Frameworks.geekbrains.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Frameworks.geekbrains.release.xcconfig"; path = "Target Support Files/Pods-Frameworks.geekbrains/Pods-Frameworks.geekbrains.release.xcconfig"; sourceTree = "<group>"; };
+		C09B79BC9183F0F6D62C7289 /* Pods_Frameworks_geekbrains.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Frameworks_geekbrains.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,7 +37,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00AF676EDE800121D0FF476B /* libPods-Frameworks.geekbrains.a in Frameworks */,
+				EA5AEEC417FAA8C22D38B598 /* Pods_Frameworks_geekbrains.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -46,7 +50,6 @@
 				04058C837D45AB753294D636 /* Pods-Frameworks.geekbrains.debug.xcconfig */,
 				9D5D8F7691D2028A23E0D134 /* Pods-Frameworks.geekbrains.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -74,6 +77,8 @@
 				606CFA9A2614E1C700F33C4B /* AppDelegate.swift */,
 				606CFA9C2614E1C700F33C4B /* SceneDelegate.swift */,
 				606CFAB12614E22300F33C4B /* MapViewController.swift */,
+				602B0E2D261B8EAC0082C138 /* Location.swift */,
+				602B0E30261B957B0082C138 /* LastTrack.swift */,
 				606CFAA32614E1CA00F33C4B /* Assets.xcassets */,
 				606CFAA52614E1CA00F33C4B /* LaunchScreen.storyboard */,
 				606CFAA82614E1CA00F33C4B /* Info.plist */,
@@ -84,7 +89,7 @@
 		A78B89D05CC155CC309026EC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				97FE5470DFAF130B13256A97 /* libPods-Frameworks.geekbrains.a */,
+				C09B79BC9183F0F6D62C7289 /* Pods_Frameworks_geekbrains.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -101,6 +106,7 @@
 				606CFA942614E1C700F33C4B /* Frameworks */,
 				606CFA952614E1C700F33C4B /* Resources */,
 				A3205CAD4F32878C36B9571A /* [CP] Copy Pods Resources */,
+				68AEBA8567BAD9044CD1E773 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -156,6 +162,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		68AEBA8567BAD9044CD1E773 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Frameworks.geekbrains/Pods-Frameworks.geekbrains-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Frameworks.geekbrains/Pods-Frameworks.geekbrains-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Frameworks.geekbrains/Pods-Frameworks.geekbrains-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		A3205CAD4F32878C36B9571A /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -202,8 +225,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				602B0E31261B957B0082C138 /* LastTrack.swift in Sources */,
 				606CFA9B2614E1C700F33C4B /* AppDelegate.swift in Sources */,
 				606CFAB22614E22300F33C4B /* MapViewController.swift in Sources */,
+				602B0E2E261B8EAC0082C138 /* Location.swift in Sources */,
 				606CFA9D2614E1C700F33C4B /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
