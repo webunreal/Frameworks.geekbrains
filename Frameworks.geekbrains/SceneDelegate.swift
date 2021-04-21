@@ -35,6 +35,49 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     func sceneDidEnterBackground(_ scene: UIScene) {
+        let center = UNUserNotificationCenter.current()
+        center.requestAuthorization(options: [.alert, .sound]) { granted, _ in
+            guard granted else {
+                print("User didn't allow notifications")
+                return
+            }
+            
+            self.sendNotificatioRequest(
+                content: self.makeNotificationContent(),
+                trigger: self.makeIntervalNotificatioTrigger()
+            )
+        }
+    }
+    
+    func makeNotificationContent() -> UNNotificationContent {
+        let content = UNMutableNotificationContent()
+        content.title = "Come back"
+        content.body = "It's time to back to the best app ever"
+        return content
+    }
+    
+    func makeIntervalNotificatioTrigger() -> UNNotificationTrigger {
+        return UNTimeIntervalNotificationTrigger(
+            timeInterval: 30 * 60,
+            repeats: false
+        )
+    }
+    
+    func sendNotificatioRequest(
+        content: UNNotificationContent,
+        trigger: UNNotificationTrigger) {
+        let request = UNNotificationRequest(
+            identifier: "alaram",
+            content: content,
+            trigger: trigger
+        )
+        
+        let center = UNUserNotificationCenter.current()
+        center.add(request) { error in
+            if let error = error {
+                print(error.localizedDescription)
+            }
+        }
     }
     
     private var privacyProtectionWindow: UIWindow?
