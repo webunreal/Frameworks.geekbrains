@@ -7,6 +7,8 @@
 
 import UIKit
 import RealmSwift
+import RxSwift
+import RxCocoa
 
 final class LoginViewController: UIViewController {
     
@@ -24,8 +26,25 @@ final class LoginViewController: UIViewController {
         view.backgroundColor = UIColor.white
         hideKeyboardWhenTappedAround()
         
-        loginView.loginButton.addTarget(self, action: #selector(login), for: .touchUpInside)
+        setupLoginButton()
         loginView.signUpButton.addTarget(self, action: #selector(signUp), for: .touchUpInside)
+    }
+    
+    private func setupLoginButton() {
+        Observable
+            .combineLatest(
+                loginView.loginTextField.rx.text,
+                loginView.passwordTextField.rx.text
+            )
+            .map { login, password in
+                return !(login ?? "").isEmpty && (password ?? "").count >= 6
+            }
+            .bind { [weak self] inputFilled in
+                self?.loginView.loginButton.backgroundColor = inputFilled ? .systemBlue : .systemGray
+                self?.loginView.loginButton.isEnabled = inputFilled
+            }
+        
+        loginView.loginButton.addTarget(self, action: #selector(login), for: .touchUpInside)
     }
     
     @objc private func login() {
@@ -47,9 +66,9 @@ final class LoginViewController: UIViewController {
     }
     
     private func presentMapViewController() {
-        let mapViewController = MapViewController()
-        mapViewController.modalPresentationStyle = .fullScreen
-        present(mapViewController, animated: true, completion: nil)
+        let navigationController = UINavigationController(rootViewController: MapViewController())
+        navigationController.modalPresentationStyle = .fullScreen
+        present(navigationController, animated: true, completion: nil)
     }
     
     private func showWrongLoginData() {

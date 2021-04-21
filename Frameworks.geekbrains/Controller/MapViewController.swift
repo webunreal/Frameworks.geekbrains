@@ -10,7 +10,7 @@ import GoogleMaps
 import CoreLocation
 import RealmSwift
 
-class MapViewController: UIViewController, CLLocationManagerDelegate {
+final class MapViewController: UIViewController {
     
     private lazy var mapView: GMSMapView = {
         let defaultCoordinate = CLLocationCoordinate2D(latitude: 55.753215, longitude: 37.622504)
@@ -20,7 +20,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         mapView.settings.myLocationButton = true
         return mapView
     }()
-    private var locationManager: CLLocationManager?
+    private let locationManager = LocationManager()
     private var isTracking = false
     private var route: GMSPolyline?
     private var routePath: GMSMutablePath?
@@ -33,7 +33,12 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         super.viewDidLoad()
         
         view.addSubview(mapView)
-        
+
+        configureNavigationBar()
+        configureLocationManager()
+    }
+    
+    private func configureNavigationBar() {
         navigationController?.navigationBar.barTintColor = .white
         navigationItem.leftBarButtonItem = UIBarButtonItem(
             title: "Start New Track",
@@ -53,8 +58,26 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
                 target: self,
                 action: #selector(finishTrack))
         ], animated: true)
-        
-        configureLocationManager()
+    }
+    
+    private func configureLocationManager() {
+        locationManager
+            .location
+            .asObservable()
+            .bind { [weak self] location in
+                guard let self = self else { return }
+                guard let location = location else { return }
+                self.routePath?.add(location.coordinate)
+                self.route?.path = self.routePath
+                let position = GMSCameraPosition.camera(withTarget: location.coordinate, zoom: 17)
+                self.mapView.animate(to: position)
+                
+                if self.isTracking {
+                    self.location.latitude = location.coordinate.latitude
+                    self.location.longitude = location.coordinate.longitude
+                    self.coordinatesForRealm.append(self.location)
+                }
+            }
     }
     
     @objc private func startNewTrack() {
@@ -109,8 +132,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     private func saveLastTrackToRealm() {
         guard let realm = realm else { return }
         
-        try? realm.write {
-            realm.deleteAll()
+        if let lastCoordinates = realm.objects(LastTrack.self).first?.coordinates {
+            try? realm.write {
+                realm.delete(lastCoordinates)
+            }
         }
         
         try? realm.write {
@@ -119,35 +144,5 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
             }
             realm.add(lastTrack)
         }
-    }
-    
-    private func configureLocationManager() {
-        locationManager = CLLocationManager()
-        locationManager?.delegate = self
-        locationManager?.allowsBackgroundLocationUpdates = true
-        locationManager?.pausesLocationUpdatesAutomatically = false
-        locationManager?.startUpdatingLocation()
-        locationManager?.startMonitoringSignificantLocationChanges()
-        locationManager?.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-        locationManager?.requestAlwaysAuthorization()
-        locationManager?.requestLocation()
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let coordinate = locations.last?.coordinate else { return }
-        routePath?.add(coordinate)
-        route?.path = routePath
-        let camera = GMSCameraPosition.camera(withTarget: coordinate, zoom: 15.0)
-        mapView.animate(to: camera)
-        
-        if isTracking {
-            location.latitude = coordinate.latitude
-            location.longitude = coordinate.longitude
-            coordinatesForRealm.append(location)
-        }
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print(error)
     }
 }
