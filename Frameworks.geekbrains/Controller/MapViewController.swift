@@ -28,6 +28,7 @@ final class MapViewController: UIViewController {
     private var coordinatesForRealm: [Location] = []
     private let location = Location()
     private let realm = try? Realm()
+    private let markerImage = MarkerImage()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,11 +41,19 @@ final class MapViewController: UIViewController {
     
     private func configureNavigationBar() {
         navigationController?.navigationBar.barTintColor = .white
-        navigationItem.leftBarButtonItem = UIBarButtonItem(
-            title: "Start New Track",
-            style: .plain,
-            target: self,
-            action: #selector(startNewTrack))
+        
+        navigationItem.setLeftBarButtonItems([
+            UIBarButtonItem(
+                title: "Start New Track",
+                style: .plain,
+                target: self,
+                action: #selector(startNewTrack)),
+            UIBarButtonItem(
+                image: UIImage(systemName: "camera"),
+                style: .plain,
+                target: self,
+                action: #selector(takePicture))
+        ], animated: true)
         
         navigationItem.setRightBarButtonItems([
             UIBarButtonItem(
@@ -72,12 +81,23 @@ final class MapViewController: UIViewController {
                 let position = GMSCameraPosition.camera(withTarget: location.coordinate, zoom: 17)
                 self.mapView.animate(to: position)
                 
+                self.addMarker(position: location.coordinate)
+                
                 if self.isTracking {
                     self.location.latitude = location.coordinate.latitude
                     self.location.longitude = location.coordinate.longitude
                     self.coordinatesForRealm.append(self.location)
                 }
             }
+    }
+    
+    private func addMarker(position: CLLocationCoordinate2D) {
+        mapView.clear()
+        let marker = GMSMarker(position: position)
+        if let image = markerImage.loadImage() {
+            marker.icon = image
+        }
+        marker.map = mapView
     }
     
     @objc private func startNewTrack() {
@@ -87,6 +107,15 @@ final class MapViewController: UIViewController {
         routePath = GMSMutablePath()
         route?.map = mapView
         coordinatesForRealm.removeAll()
+    }
+    
+    @objc private func takePicture() {
+        guard UIImagePickerController.isSourceTypeAvailable(.camera) else { return }
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.sourceType = .camera
+        imagePickerController.allowsEditing = true
+        imagePickerController.delegate = self
+        present(imagePickerController, animated: true)
     }
     
     @objc private func showLastTrack() {
@@ -143,6 +172,29 @@ final class MapViewController: UIViewController {
                 lastTrack.coordinates.append(item)
             }
             realm.add(lastTrack)
+        }
+    }
+}
+
+extension MapViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true)
+    }
+    
+    private func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String: Any]) {
+        picker.dismiss(animated: true) { [weak self] in
+            guard let image = self?.extractImage(from: info) else { return }
+            self?.markerImage.saveImage(image)
+        }
+    }
+    
+    private func extractImage(from info: [String: Any]) -> UIImage? {
+        if let image = info[UIImagePickerController.InfoKey.editedImage.rawValue] as? UIImage {
+            return image
+        } else if let image = info[UIImagePickerController.InfoKey.originalImage.rawValue] as? UIImage {
+            return image
+        } else {
+            return nil
         }
     }
 }
