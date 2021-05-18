@@ -21,6 +21,7 @@
 		606CFAA42614E1CA00F33C4B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 606CFAA32614E1CA00F33C4B /* Assets.xcassets */; };
 		606CFAA72614E1CA00F33C4B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 606CFAA52614E1CA00F33C4B /* LaunchScreen.storyboard */; };
 		606CFAB22614E22300F33C4B /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606CFAB12614E22300F33C4B /* MapViewController.swift */; };
+		607564F52635764400A8AE03 /* MarkerImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607564F42635764400A8AE03 /* MarkerImage.swift */; };
 		EA5AEEC417FAA8C22D38B598 /* Pods_Frameworks_geekbrains.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C09B79BC9183F0F6D62C7289 /* Pods_Frameworks_geekbrains.framework */; };
 /* End PBXBuildFile section */
 
@@ -42,6 +43,7 @@
 		606CFAA62614E1CA00F33C4B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		606CFAA82614E1CA00F33C4B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		606CFAB12614E22300F33C4B /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		607564F42635764400A8AE03 /* MarkerImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkerImage.swift; sourceTree = "<group>"; };
 		9D5D8F7691D2028A23E0D134 /* Pods-Frameworks.geekbrains.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Frameworks.geekbrains.release.xcconfig"; path = "Target Support Files/Pods-Frameworks.geekbrains/Pods-Frameworks.geekbrains.release.xcconfig"; sourceTree = "<group>"; };
 		C09B79BC9183F0F6D62C7289 /* Pods_Frameworks_geekbrains.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Frameworks_geekbrains.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -128,6 +130,7 @@
 				606CFA9A2614E1C700F33C4B /* AppDelegate.swift */,
 				606CFA9C2614E1C700F33C4B /* SceneDelegate.swift */,
 				601868FF262751E000FAF9DC /* LocationManager.swift */,
+				607564F42635764400A8AE03 /* MarkerImage.swift */,
 				6067509E261E200600ED12EF /* Model */,
 				606750A2261E20A700ED12EF /* View */,
 				606750A3261E20AD00ED12EF /* Controller */,
@@ -284,6 +287,7 @@
 				606750A5261E215200ED12EF /* LoginView.swift in Sources */,
 				606CFA9B2614E1C700F33C4B /* AppDelegate.swift in Sources */,
 				601868F42624C1BA00FAF9DC /* ProtectionViewController.swift in Sources */,
+				607564F52635764400A8AE03 /* MarkerImage.swift in Sources */,
 				606750A0261E201A00ED12EF /* User.swift in Sources */,
 				606CFAB22614E22300F33C4B /* MapViewController.swift in Sources */,
 				60186900262751E000FAF9DC /* LocationManager.swift in Sources */,

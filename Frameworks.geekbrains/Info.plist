@@ -26,6 +26,8 @@
 	<string>To collect everything about you</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>To collect everything about you</string>
+	<key>NSCameraUsageDescription</key>
+	<string>To collect your photo</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
